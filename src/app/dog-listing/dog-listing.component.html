@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="grid-container">
+    <div *ngFor="let dog of dogs" class="item">
+      <div >
+        <img id="myImg" src={{dog.image}} (click)="imgonclick(dog.image)">
+        <div id="myModal" class="modal" >
+            <span class="close" (click)="spanonclick()">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- style="width:100%;max-width:300px" -->
