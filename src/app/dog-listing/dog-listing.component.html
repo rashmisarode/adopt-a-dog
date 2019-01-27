@@ -1,7 +1,7 @@
 <div class="container">
   <div class="grid-container">
     <div *ngFor="let dog of dogs" class="item">
-      <div >
+      <div class="thumbnail">
         <img id="myImg" src={{dog.image}} (click)="imgonclick(dog.image)">
         <div id="myModal" class="modal" >
             <span class="close" (click)="spanonclick()">&times;</span>
