@@ -9,12 +9,13 @@ import { LoadListService } from '../load-list.service';
 export class DogListingComponent implements OnInit {
 
   dogs;
+  data;
 
   renderedDogs;
 
   start = 0;
   end = 0;
-  scrollLoad = 5;
+  scrollLoad = 1;
 
   constructor(private loadListService: LoadListService) {
     this.dogs=[];
@@ -24,8 +25,8 @@ export class DogListingComponent implements OnInit {
   getDogs(): void {
     this.loadListService.getDogs()
       .subscribe(data => {
-        console.log(data);
-        this.dogs = data.dogs;
+        this.data = data;
+        this.dogs = this.data.dogs;
         this.onScroll();
       })
   }
@@ -37,9 +38,8 @@ export class DogListingComponent implements OnInit {
   onScroll() {
     console.log("Infinite Scroll called end="+this.end);
     if(this.end <=this.dogs.length) {
-      for(var i=this.end; i<this.end+this.scrollLoad && i<this.dogs.length; i++) {
+      for (var i=this.end; i<(this.end+this.scrollLoad) && i<this.dogs.length; i++, this.end++) {
         this.renderedDogs.push(this.dogs[i]);
-        this.end= this.end+1;
       }  
     }
 
@@ -55,8 +55,7 @@ export class DogListingComponent implements OnInit {
   //  captionText = document.getElementById("caption");
   imgonclick = function (src) {
     console.log(src);
-    let img = document.getElementById('myImg');
-    let modalImg = document.getElementById("img01");
+    let modalImg = document.getElementById("img01") as HTMLImageElement;
     let modal = document.getElementById('myModal');
     modal.style.display = "block";
     modalImg.src = src;

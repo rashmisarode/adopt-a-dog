@@ -2,12 +2,13 @@
   <div class="grid-container">
     <div *ngFor="let dog of renderedDogs" class="item">
       <div class="thumbnail">
-        <img id="myImg" src={{dog.image}} (click)="imgonclick(dog.image)">
+        <img id="myImg" src={{dog.image}} (click)="imgonclick(dog.image)" alt="Dog thumbnail">
         <div id="myModal" class="modal" >
             <span class="close" (click)="spanonclick()">&times;</span>
-            <img class="modal-content" id="img01"> <a class="modal-content-link" href="{{dog.source}}">Source</a>
+            <img class="modal-content" id="img01" [src]=""> <a class="modal-content-link" href="{{dog.source}}">Source</a>
         </div>
       </div>
     </div>
   </div>
+  <h4 *ngIf= "(end < dogs.length)" style="color: gainsboro; margin-left: 20px"> Scroll for loading more images......</h4>
 </div>
