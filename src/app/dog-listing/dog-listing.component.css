@@ -3,36 +3,19 @@
 }
 
 .container {
-    /* display: grid; */
     height: 100%;
     justify-content: stretch;
     background: #ddd;
-   
-
 } 
-/* .grid-container {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row-reverse ;
-    flex-wrap:  wrap;
-    flex-flow: row wrap;
-    align-content: stretch;
-    padding: 30px;
-}
-.item {
-  order: integer;
-} */
-
 .grid-container {
     display: grid;
-    justify-content: space-around;
+    justify-content: space-evenly;
     column-count: 5;
     grid-template-columns: repeat(auto-fill, 300px);
     grid-template-rows: auto auto auto;
-    grid-gap: 25px;
-    padding: 20px;
+    grid-gap: 30px;
+    padding: 30px;
 }
-
 .card {
     background-color: transparent;
     padding: 0px;
@@ -45,13 +28,12 @@
     cursor: pointer;
     transition: 0.3s;
     width: 100% ;
-    
   }
   
-  #myImg:hover {opacity: 0.7;}
+#myImg:hover {opacity: 0.5;}
   
   /* The Modal (background) */
-  .modal {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -63,72 +45,54 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  }
+}
   
   /* Modal Content (image) */
-  .modal-content {
+.modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    height: 90%;
-    max-width: 700px;
-  }
+    width: 70%;
+    height: 70%;
+    max-width: 100%;
+}
   
-  /* Caption of Modal Image */
-  #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-  }
-  
-  /* Add Animation */
-  .modal-content, #caption {  
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-  }
-  
-  @-webkit-keyframes zoom {
+@-webkit-keyframes zoom {
     from {-webkit-transform:scale(0)} 
     to {-webkit-transform:scale(1)}
-  }
+}
   
-  @keyframes zoom {
+@keyframes zoom {
     from {transform:scale(0)} 
     to {transform:scale(1)}
-  }
+}
   
   /* The Close Button */
-  .close {
+.close {
     position: absolute;
     top: 15px;
-    right: 35px;
+    right: 15px;
+    z-index: 1;
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
-  }
+}
   
-  .close:hover,
+.close:hover,
   .close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
-  }
+}
   
-  .thumbnail {
+.thumbnail {
     position: relative;
     width: 200px;
     height: 200px;
     overflow: hidden;
-  }
-  .thumbnail img {
+    margin : auto;
+}
+.thumbnail img {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -137,8 +101,8 @@
     -webkit-transform: translate(-50%,-50%);
         -ms-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);
-  }
-  .thumbnail img.portrait {
+}
+.thumbnail img.portrait {
     width: 100%;
     height: auto;
-  }
+}
