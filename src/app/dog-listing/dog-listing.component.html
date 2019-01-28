@@ -1,11 +1,11 @@
 <div class="container">
   <div class="grid-container">
-    <div *ngFor="let dog of dogs" class="item">
+    <div *ngFor="let dog of renderedDogs" class="item">
       <div class="thumbnail">
         <img id="myImg" src={{dog.image}} (click)="imgonclick(dog.image)">
         <div id="myModal" class="modal" >
             <span class="close" (click)="spanonclick()">&times;</span>
-            <img class="modal-content" id="img01">
+            <img class="modal-content" id="img01"> <a class="modal-content-link" href="{{dog.source}}">Source</a>
         </div>
       </div>
     </div>

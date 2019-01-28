@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LoadListService } from '../load-list.service';
 
 @Component({
@@ -10,15 +10,42 @@ export class DogListingComponent implements OnInit {
 
   dogs;
 
-  constructor(private loadListService: LoadListService) { }
+  renderedDogs;
+
+  start = 0;
+  end = 0;
+  scrollLoad = 5;
+
+  constructor(private loadListService: LoadListService) {
+    this.dogs=[];
+    this.renderedDogs=[];
+   }
 
   getDogs(): void {
     this.loadListService.getDogs()
       .subscribe(data => {
         console.log(data);
         this.dogs = data.dogs;
+        this.onScroll();
       })
   }
+
+  @HostListener('window:wheel', [])
+  @HostListener('window:scroll', [])
+  @HostListener('window:keydown', [])
+  @HostListener('window:touchmove', [])
+  onScroll() {
+    console.log("Infinite Scroll called end="+this.end);
+    if(this.end <=this.dogs.length) {
+      for(var i=this.end; i<this.end+this.scrollLoad && i<this.dogs.length; i++) {
+        this.renderedDogs.push(this.dogs[i]);
+        this.end= this.end+1;
+      }  
+    }
+
+  }
+
+
 
   // Get the modal
  
@@ -46,7 +73,10 @@ export class DogListingComponent implements OnInit {
   }
 
   ngOnInit() {
+   // window.addEventListener('scroll', this.onScroll, true); //third parameter
+    
     this.getDogs();
+    
   }
 
 }

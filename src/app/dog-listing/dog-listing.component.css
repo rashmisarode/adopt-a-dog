@@ -5,7 +5,8 @@
 .container {
     height: 100%;
     justify-content: stretch;
-    background: #ddd;
+    /* background: #ddd; */
+    background: whitesmoke;
 } 
 .grid-container {
     display: grid;
@@ -24,7 +25,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #myImg {
-    border-radius: 5px;
+    border-radius: 100px;
     cursor: pointer;
     transition: 0.3s;
     width: 100% ;
